@@ -9,7 +9,7 @@ import com.shpp.karel.KarelTheRobot;
 public class Assignment1Part1 extends KarelTheRobot {
 
     /**
-     * Added new comments.
+     * Added new comments. And another one.
      * Runs the program. Must contains ONLY free methods.
      * goForTheNewspaper() - Initialize Karel. Karel goes to a newspaper.
      * pickupTheNewspaper() - Karel pickups the newspaper.
