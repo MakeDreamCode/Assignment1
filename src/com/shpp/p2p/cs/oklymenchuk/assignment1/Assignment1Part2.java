@@ -45,7 +45,10 @@ public class Assignment1Part2 extends KarelTheRobot{
      */
     private void buildColumn() throws Exception {
         fillEmptyParts();
-        goToNextColumn();
+        if(rightIsClear()){                                 // if Karel is not at the eastern border
+            goToNextColumn();                               // go to the next column
+        }
+
     }
 
     /**
@@ -72,15 +75,15 @@ public class Assignment1Part2 extends KarelTheRobot{
      * and turns right again to be on the next column.
      */
     private void goToNextColumn() throws Exception {
-        if(facingSouth() && leftIsClear()) {                // if Karel looks South (he's at the floor)
-            turnLeft();                                     // must turn left
-            makeFourSteps();                                // make four steps for the next column
-            turnLeft();                                     // and turn left for looking North
-        } else if (facingNorth() && rightIsClear()){        // if Karel looks North (he's at the ceiling)
-            turnRight();                                    // must turn right
-            makeFourSteps();                                // make four steps for the next column
-            turnRight();                                    // and turn right for look South
+        turnBack();                                         // look South
+
+        while (frontIsClear()){
+            move();                                         // move to southern border
         }
+
+        turnLeft();                                         // look East
+        makeFourSteps();                                    // go to the next column
+        turnLeft();                                         // look North (ready to fill new column)
     }
 
     /**
@@ -102,6 +105,14 @@ public class Assignment1Part2 extends KarelTheRobot{
         for (int i = 0; i < 4; i++) {
             move();
         }
+    }
+
+    /**
+     * Turn back.
+     */
+    private void turnBack() throws Exception {
+        turnLeft();
+        turnLeft();
     }
 
     /**

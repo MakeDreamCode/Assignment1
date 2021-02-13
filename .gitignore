@@ -1,7 +1,8 @@
 .idea/
 out/
+# don`t take mazes from the project
 static/
 *.iml
 *.jar
-# тут добавлена строка с комментарием
-*.txt
+# don`t take me.txt
+me.txt
