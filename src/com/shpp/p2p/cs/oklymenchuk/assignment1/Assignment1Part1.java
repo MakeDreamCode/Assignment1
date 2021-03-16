@@ -32,7 +32,7 @@ public class Assignment1Part1 extends KarelTheRobot {
         move();
     }
 
-
+    //TODO header + comments
     private void moveIfForwardFree() throws Exception {
         while (frontIsBlocked()) {
             turnRight();
@@ -40,7 +40,7 @@ public class Assignment1Part1 extends KarelTheRobot {
         move();
     }
 
-
+    //TODO header + comments
     private void moveForNewspaper() throws Exception {
 
         karelInit();
@@ -50,7 +50,7 @@ public class Assignment1Part1 extends KarelTheRobot {
         }
     }
 
-
+    //TODO header + comments
     private void returnToStartPosition() throws Exception {
         while (noBeepersPresent()) {
             moveIfForwardFree();
@@ -60,7 +60,7 @@ public class Assignment1Part1 extends KarelTheRobot {
         say("Job is finished!");
     }
 
-
+    //TODO header + comments
     private void takeTheNewspaper() throws Exception {
 
         turnLeft();
