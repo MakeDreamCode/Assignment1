@@ -20,12 +20,12 @@ public class Assignment1Part3 extends KarelTheRobot{
 
         karelInit();
 
-        // для 1хч
-
+        // для 1х1
         if (frontIsBlocked()){
             putBeeper();
-        } else {
-
+        }
+        // иначе для 2х2 и выше
+        else {
             // заполнить нижний ряд биперами
             while (frontIsClear()) {
                 putBeeper();
@@ -43,19 +43,19 @@ public class Assignment1Part3 extends KarelTheRobot{
             }
             turnBack();
 
-
+            // основной цикл удаления всех биперов кроме центрального
             while (beepersPresent() && frontIsClear()) {
 
                 move();
 
-                // удаляем биперы с краев
+                // удаляем биперы у стен карты
                 if (frontIsBlocked() && beepersPresent()) {
                     pickBeeper();
                     turnBack();
                     move();
                 }
 
-                // удаляем биперы с краев
+                // удаляем биперы с краев "линии биперов"
                 if (!beepersPresent()) {
 
                     //нет бипера? разворот и возврат на две клетки назад
@@ -68,7 +68,7 @@ public class Assignment1Part3 extends KarelTheRobot{
                         // развернулись и перешли в последнюю клетку с бипером
                         turnBack();
                         move();
-                        // подняли бипер, развернулись и перешли на "теперь уже последнюю" клетку с бипером
+                        // удалили бипер, развернулись и перешли на "теперь уже последнюю" клетку с бипером
                         pickBeeper();
                         turnBack();
                         move();
@@ -77,12 +77,8 @@ public class Assignment1Part3 extends KarelTheRobot{
             }
         }
 
-        /*turnBack();
-        move();*/
+        // когда закончили работу - сообщили
         say("Job is finished!");
-
-
-
     }
 
     /**
