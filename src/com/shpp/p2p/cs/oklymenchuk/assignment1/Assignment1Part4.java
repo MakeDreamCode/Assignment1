@@ -18,15 +18,10 @@ public class Assignment1Part4 extends KarelTheRobot {
         if (frontIsBlocked()){
 
             putBeeper();
+
             turnLeft();
 
-            while (frontIsClear()){
-                move();
-                if (frontIsClear()) {
-                    move();
-                    putBeeper();
-                }
-            }
+            fillsTheLineBeepers();
 
         } else {
 
@@ -36,46 +31,51 @@ public class Assignment1Part4 extends KarelTheRobot {
                     putBeeper();
                 }
 
-                if (frontIsClear()) {
-                    move();
-                    if (frontIsClear()) {
-                        move();
-                        putBeeper();
-                    }
-                }
+                fillsTheLineBeepers();
 
                 if (facingEast() && frontIsBlocked() && leftIsClear()) {
-
                     if (beepersPresent()) {
-                        turnLeft();
-                        move();
-                        turnLeft();
+                        leftReverseTurn();
                         move();
                     } else {
-                        turnLeft();
-                        move();
-                        turnLeft();
+                        leftReverseTurn();
                     }
                 }
 
                 if (facingWest() && frontIsBlocked() && rightIsClear()) {
-
                     if (beepersPresent()) {
-                        turnRight();
-                        move();
-                        turnRight();
+                        rightReverseTurn();
                         move();
                     } else {
-                        turnRight();
-                        move();
-                        turnRight();
+                        rightReverseTurn();
                     }
                 }
             }
         }
-
         // когда закончили работу - сообщили
         say("Job is finished!");
+    }
+
+    private void fillsTheLineBeepers() throws Exception {
+        while (frontIsClear()){
+            move();
+            if (frontIsClear()) {
+                move();
+                putBeeper();
+            }
+        }
+    }
+
+    private void rightReverseTurn() throws Exception {
+        turnRight();
+        move();
+        turnRight();
+    }
+
+    private void leftReverseTurn() throws Exception {
+        turnLeft();
+        move();
+        turnLeft();
     }
 
     /**
