@@ -10,7 +10,6 @@ public class Assignment1Part2 extends KarelTheRobot{
 
     	while (facingNorth()) {
 
-
 			// положить бипер на случай, если колонна имеет высоту = 1
 			if (!beepersPresent()) {
 				putBeeper();
@@ -57,8 +56,6 @@ public class Assignment1Part2 extends KarelTheRobot{
 	/**
 	 * Initialize Karel.
 	 * Karel must say "Hello. Ready to work." (switch on robot).
-	 * Mark the place by installing a beeper to return.
-	 * Make one step forward for get off from the beeper.
 	 */
 	private void karelInit() throws Exception {
 		say("Hello. Ready to work.");
