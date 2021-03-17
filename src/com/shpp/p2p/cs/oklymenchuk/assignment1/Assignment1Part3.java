@@ -4,15 +4,6 @@ import com.shpp.karel.KarelTheRobot;
 
 /**
  * Task 3. Finding a middle.
- * Karel starts in the southwest corner and looks to the east, he is full of beavers in his backpack.
- * There are no beavers or walls in the world.
- * The world may not be square, but it is at least as tall as it is wide.
- * If the width of the world is odd, then Karel needs to put a beeper in the central cell,
- * otherwise you need to put in one of the two central cells.
- * It doesn't matter where Karel looks after he finishes his race.
- *
- * Algorithm for solving the problem:
-
  */
 public class Assignment1Part3 extends KarelTheRobot{
 
@@ -20,14 +11,10 @@ public class Assignment1Part3 extends KarelTheRobot{
 
         karelInit();
 
-        // для 1х1
-        if (frontIsBlocked()){
+        if (frontIsBlocked()){                              // if has 1x1
             putBeeper();
-        }
-        // иначе для 2х2 и выше
-        else {
-            // заполнить нижний ряд биперами
-            while (frontIsClear()) {
+        } else {                                            // else has 2х2 or above
+            while (frontIsClear()) {                        // fill the bottom row with beepers
                 putBeeper();
                 move();
 
@@ -36,48 +23,35 @@ public class Assignment1Part3 extends KarelTheRobot{
                 }
             }
 
-            //вернуться в начало
-            turnBack();
+            turnBack();                                     // return to starting position
+
             while (frontIsClear()) {
                 move();
             }
+
             turnBack();
 
-            // основной цикл удаления всех биперов кроме центрального
-            while (beepersPresent() && frontIsClear()) {
-
+            while (beepersPresent() && frontIsClear()) {    // main cycle of removing beepers
                 move();
 
-                // удаляем биперы у стен карты
-                if (frontIsBlocked() && beepersPresent()) {
+                if (frontIsBlocked() && beepersPresent()) { // remove beepers from the walls of the map
                     pickBeeper();
-                    turnBack();
-                    move();
+                    stepBack();
                 }
 
-                // удаляем биперы с краев "линии биперов"
-                if (!beepersPresent()) {
-
-                    //нет бипера? разворот и возврат на две клетки назад
-                    turnBack();
-                    move();
+                if (!beepersPresent()) {                    // remove beepers from the edges of the "beeper line"
+                    stepBack();                             // no beeper? turn and return two cells back
                     move();
 
-                    // если в предпоследней от "края" клетке есть бипер
-                    if (beepersPresent()) {
-                        // развернулись и перешли в последнюю клетку с бипером
-                        turnBack();
-                        move();
-                        // удалили бипер, развернулись и перешли на "теперь уже последнюю" клетку с бипером
-                        pickBeeper();
-                        turnBack();
-                        move();
+                    if (beepersPresent()) {                 // if the cell next to last from the "edge" has a beeper
+                        stepBack();                         // turn around and go to the last cell with a beeper
+                        pickBeeper();                       // remove a beeper
+                        stepBack();                         // turn around and go to the new cycle
                     }
                 }
             }
         }
 
-        // когда закончили работу - сообщили
         say("Job is finished!");
     }
 
@@ -87,6 +61,14 @@ public class Assignment1Part3 extends KarelTheRobot{
      */
     private void karelInit() throws Exception {
         say("Hello. Ready to work.");
+    }
+
+    /**
+     * Makes one step back.
+     */
+    private void stepBack() throws Exception {
+        turnBack();
+        move();
     }
 
     /**

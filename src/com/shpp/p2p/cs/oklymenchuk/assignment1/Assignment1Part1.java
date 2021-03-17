@@ -32,7 +32,11 @@ public class Assignment1Part1 extends KarelTheRobot {
         move();
     }
 
-    //TODO header + comments
+    /**
+     * Karel moves if front is free.
+     * When front will blocked (Karel reached a corner),
+     * Karel must turn left for keep moving.
+     */
     private void moveIfForwardFree() throws Exception {
         while (frontIsBlocked()) {
             turnRight();
@@ -40,17 +44,26 @@ public class Assignment1Part1 extends KarelTheRobot {
         move();
     }
 
-    //TODO header + comments
+    /**
+     * First main method.
+     * Init Karel. Karel goes to the door, holding on to the left wall.
+     * If there is no wall, this is a door.
+     */
     private void moveForNewspaper() throws Exception {
 
         karelInit();
 
-        while (noBeepersPresent() && leftIsBlocked()) {
-            moveIfForwardFree();
+        while (noBeepersPresent() && leftIsBlocked()) { // holding on to the left wall
+            moveIfForwardFree();                        // Karel goes to a next corner
         }
     }
 
-    //TODO header + comments
+    /**
+     * Third main method.
+     * Karel walks until he finds a beeper.
+     * If a beeper is found, then Karel has returned to the starting position.
+     * Karel raises the beeper and says "Job is finished!".
+     */
     private void returnToStartPosition() throws Exception {
         while (noBeepersPresent()) {
             moveIfForwardFree();
@@ -60,24 +73,27 @@ public class Assignment1Part1 extends KarelTheRobot {
         say("Job is finished!");
     }
 
-    //TODO header + comments
+    /**
+     * Second main method.
+     * Karel leaves the house, takes a newspaper and returns to the house.
+     */
     private void takeTheNewspaper() throws Exception {
 
-        turnLeft();
+        turnLeft();                                 // Karel reached the door and turn left
 
-        while (noBeepersPresent()){
+        while (noBeepersPresent()){                 // moving until reach the newspaper
             move();
         }
 
-        pickBeeper();
-        turnBack();
+        pickBeeper();                               // pickup the newspaper
+        turnBack();                                 // and turn back
 
-        while (leftIsClear() && rightIsClear()){
+        while (leftIsClear() && rightIsClear()){    // return at the door
             move();
         }
 
-        move();
-        turnLeft();
+        move();                                     // enter the house
+        turnLeft();                                 // turn left for start moving at the start position
     }
 
     /**

@@ -2,6 +2,9 @@ package com.shpp.p2p.cs.oklymenchuk.assignment1;
 
 import com.shpp.karel.KarelTheRobot;
 
+/**
+ * Task 2. Rows of stones.
+ */
 public class Assignment1Part2 extends KarelTheRobot{
 
     public void run() throws Exception {
@@ -10,14 +13,11 @@ public class Assignment1Part2 extends KarelTheRobot{
 
     	while (facingNorth()) {
 
-			// положить бипер на случай, если колонна имеет высоту = 1
-			if (!beepersPresent()) {
+			if (!beepersPresent()) { 	// puts a beeper if column`s height equals 1
 				putBeeper();
 			}
 
-			// идем до верха колонны и докладываем биперы
-			while (frontIsClear()) {
-
+			while (frontIsClear()) { 	// go to the top of the column and puts beepers
 				move();
 
 				if (!beepersPresent()) {
@@ -25,43 +25,41 @@ public class Assignment1Part2 extends KarelTheRobot{
 				}
 			}
 
-			// достигнув верха разворачиваемся и идем вниз
-			turnBack();
+			turnBack();					// if top was reached turn back
 
-			// идем до основания колонны
-			while (frontIsClear()) {
+			while (frontIsClear()) {	// and go to the bottom of the column
 				move();
 			}
 
-			// дошли до основания и проверяем последняя ли колонна?
-
-			if (leftIsClear()){
-				// нет - поворачиваем на лево
-				turnLeft();
-				// и бежим через 4 клетки
-				makeFoursSteps();
-				turnLeft();
+			if (leftIsClear()){			// it was the last column (left is blocked)?
+				turnLeft();				// no - turn left
+				makeFoursSteps();		// go to the next column
+				turnLeft();				// turn North for continue the cycle
 			}
 		}
 
     	say("Job is finished!");
     }
 
-	private void makeFoursSteps() throws Exception {
-		for (int i = 0; i < 4; i++) {
-			move();
+	/**
+	 * Initialize Karel.
+	 * Karel must say "Hello. Ready to work." (switch on robot).
+	 * Turns North.
+	 */
+	private void karelInit() throws Exception {
+		say("Hello. Ready to work.");
+
+		while (!facingNorth()) {
+			turnLeft();
 		}
 	}
 
 	/**
-	 * Initialize Karel.
-	 * Karel must say "Hello. Ready to work." (switch on robot).
+	 * Karel makes four steps (to reach a next column).
 	 */
-	private void karelInit() throws Exception {
-		say("Hello. Ready to work.");
-		// повернуться на север
-		while (!facingNorth()) {
-			turnLeft();
+	private void makeFoursSteps() throws Exception {
+		for (int i = 0; i < 4; i++) {
+			move();
 		}
 	}
 
