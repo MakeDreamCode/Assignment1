@@ -11,33 +11,29 @@ public class Assignment1Part4 extends KarelTheRobot {
         karelInit();
 
         if (frontIsBlocked()){								// has 1xN world
-            putBeeper();
-            turnLeft();
-            fillsTheLineBeepers();
-        } else {											// has MxN world
+            putBeeper();									// puts a beeper at the start position
+            turnLeft();										// look North
+            fillsTheLineBeepers();							// fills the line with beepers through one cell
+        } else {											// has Mx1 or MxN world
             while (frontIsClear()) {						// main cycle
-
-            	if (!beepersPresent()) {					// puts a beeper at the start position
-                    putBeeper();
-                }
-
+            	putBeeper();								// puts a beeper at the start position
                 fillsTheLineBeepers();						// fills the line with beepers through one cell
 
                 if (facingEast() && frontIsBlocked() && leftIsClear()) {// reached the left border
                     if (beepersPresent()) {					// has a beeper in the last cell
-                        leftReverseTurn();					// goes to the next line
+                        moveToTheLeftLineAndTurnLeft();		// goes to the next line
                         move();								// and makes one step for indent between beepers
                     } else {
-                        leftReverseTurn();				    // go to the next line
+                        moveToTheLeftLineAndTurnLeft();	    // go to the next line
                     }
                 }
 
                 if (facingWest() && frontIsBlocked() && rightIsClear()) {// reached the right border
                     if (beepersPresent()) {					// has a beeper in the last cell
-                        rightReverseTurn();					// goes to the next line
+                        moveToTheRightLineAndTurnRight();   // goes to the next line
                         move();								// and makes one step for indent between beepers
                     } else {
-                        rightReverseTurn();					// go to the next line
+                        moveToTheRightLineAndTurnRight();	// go to the next line
                     }
                 }
             }
@@ -68,24 +64,24 @@ public class Assignment1Part4 extends KarelTheRobot {
 	}
 
 	/**
-	 * Turns left, goes to the next line and turns left again.
+	 * Goes to the next left line and turns left again.
 	 *  <-
 	 *   |
-	 * --
+	 * ->
 	 */
-	private void leftReverseTurn() throws Exception {
+	private void moveToTheLeftLineAndTurnLeft() throws Exception {
 		turnLeft();
 		move();
 		turnLeft();
 	}
 
 	/**
-	 * Turns right, goes to the next line and turns right again.
+	 * Goes to the next right line and turns right again.
 	 *  ->
 	 * |
-	 * --
+	 * <-
 	 */
-	private void rightReverseTurn() throws Exception {
+	private void moveToTheRightLineAndTurnRight() throws Exception {
         turnRight();
         move();
         turnRight();
