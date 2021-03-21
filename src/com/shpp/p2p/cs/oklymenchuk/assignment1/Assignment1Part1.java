@@ -79,21 +79,21 @@ public class Assignment1Part1 extends KarelTheRobot {
      */
     private void takeTheNewspaper() throws Exception {
 
-        turnLeft();                                 // Karel reached the door and turn left
+        turnLeft();                                 // Karel reached the door and turned left
 
-        while (noBeepersPresent()){                 // moving until reach the newspaper
+        while (noBeepersPresent()){                 // moving until it reaches the newspaper
             move();
         }
 
         pickBeeper();                               // pickup the newspaper
         turnBack();                                 // and turn back
 
-        while (leftIsClear() && rightIsClear()){    // return at the door
+        while (leftIsClear() && rightIsClear()){    // return to the door
             move();
         }
 
         move();                                     // enter the house
-        turnLeft();                                 // turn left for start moving at the start position
+        turnLeft();                                 // turn left to start moving at the start position
     }
 
     /**

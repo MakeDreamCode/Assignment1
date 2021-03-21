@@ -43,7 +43,7 @@ public class Assignment1Part3 extends KarelTheRobot{
                     stepBack();                             // no beeper? turn and return two cells back
                     move();
 
-                    if (beepersPresent()) {                 // if the cell next to last from the "edge" has a beeper
+                    if (beepersPresent()) {                 // if the cell next to the last from the "edge" has a beeper
                         stepBack();                         // turn around and go to the last cell with a beeper
                         pickBeeper();                       // remove a beeper
                         stepBack();                         // turn around and go to the new cycle

@@ -11,18 +11,18 @@ public class Assignment1Part4 extends KarelTheRobot {
         karelInit();
 
         if (frontIsBlocked()){								// has 1xN world
-            putBeeper();									// puts a beeper at the start position
+            putBeeper();									// put a beeper at the start position
             turnLeft();										// look North
-            fillsTheLineBeepers();							// fills the line with beepers through one cell
+            fillsTheLineBeepers();							// fill the line with beepers through one cell
         } else {											// has Mx1 or MxN world
             while (frontIsClear()) {						// main cycle
-            	putBeeper();								// puts a beeper at the start position
-                fillsTheLineBeepers();						// fills the line with beepers through one cell
+            	putBeeper();								// put a beeper at the start position
+                fillsTheLineBeepers();						// fill the line with beepers through one cell
 
                 if (facingEast() && frontIsBlocked() && leftIsClear()) {// reached the left border
                     if (beepersPresent()) {					// has a beeper in the last cell
-                        moveToTheLeftLineAndTurnLeft();		// goes to the next line
-                        move();								// and makes one step for indent between beepers
+                        moveToTheLeftLineAndTurnLeft();		// goe to the next line
+                        move();								// and make one step for the indent between beepers
                     } else {
                         moveToTheLeftLineAndTurnLeft();	    // go to the next line
                     }
@@ -30,8 +30,8 @@ public class Assignment1Part4 extends KarelTheRobot {
 
                 if (facingWest() && frontIsBlocked() && rightIsClear()) {// reached the right border
                     if (beepersPresent()) {					// has a beeper in the last cell
-                        moveToTheRightLineAndTurnRight();   // goes to the next line
-                        move();								// and makes one step for indent between beepers
+                        moveToTheRightLineAndTurnRight();   // go to the next line
+                        move();								// and make one step for indent between beepers
                     } else {
                         moveToTheRightLineAndTurnRight();	// go to the next line
                     }

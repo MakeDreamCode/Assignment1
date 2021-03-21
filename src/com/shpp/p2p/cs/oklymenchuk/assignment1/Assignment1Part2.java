@@ -17,7 +17,7 @@ public class Assignment1Part2 extends KarelTheRobot{
 				putBeeper();
 			}
 
-			while (frontIsClear()) { 	// go to the top of the column and puts beepers
+			while (frontIsClear()) { 	// go to the top of the column and put beepers
 				move();
 
 				if (!beepersPresent()) {
@@ -34,7 +34,7 @@ public class Assignment1Part2 extends KarelTheRobot{
 			if (leftIsClear()){			// it was the last column (left is blocked)?
 				turnLeft();				// no - turn left
 				makeFoursSteps();		// go to the next column
-				turnLeft();				// turn North for continue the cycle
+				turnLeft();				// turn North to continue the cycle
 			}
 		}
 
