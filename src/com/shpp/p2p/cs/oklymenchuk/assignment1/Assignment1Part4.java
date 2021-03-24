@@ -21,7 +21,7 @@ public class Assignment1Part4 extends KarelTheRobot {
 
                 if (facingEast() && frontIsBlocked() && leftIsClear()) {// reached the left border
                     if (beepersPresent()) {					// has a beeper in the last cell
-                        moveToTheLeftLineAndTurnLeft();		// goe to the next line
+                        moveToTheLeftLineAndTurnLeft();		// go to the next line
                         move();								// and make one step for the indent between beepers
                     } else {
                         moveToTheLeftLineAndTurnLeft();	    // go to the next line
