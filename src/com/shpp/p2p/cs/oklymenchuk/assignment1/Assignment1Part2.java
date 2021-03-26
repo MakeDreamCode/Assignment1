@@ -5,19 +5,19 @@ import com.shpp.karel.KarelTheRobot;
 /**
  * Task 2. Rows of stones.
  */
-public class Assignment1Part2 extends KarelTheRobot{
+public class Assignment1Part2 extends KarelTheRobot {
 
-    public void run() throws Exception {
+	public void run() throws Exception {
 
-    	karelInit();
+		karelInit();
 
-    	while (facingNorth()) {
+		while (facingNorth()) {
 
-			if (!beepersPresent()) { 	// puts a beeper if column`s height equals 1
+			if (!beepersPresent()) {    // puts a beeper if column`s height equals 1
 				putBeeper();
 			}
 
-			while (frontIsClear()) { 	// go to the top of the column and put beepers
+			while (frontIsClear()) {    // go to the top of the column and put beepers
 				move();
 
 				if (!beepersPresent()) {
@@ -25,21 +25,21 @@ public class Assignment1Part2 extends KarelTheRobot{
 				}
 			}
 
-			turnBack();					// if top was reached turn back
+			turnBack();                    // if top was reached turn back
 
-			while (frontIsClear()) {	// and go to the bottom of the column
+			while (frontIsClear()) {    // and go to the bottom of the column
 				move();
 			}
 
-			if (leftIsClear()){			// it was the last column (left is blocked)?
-				turnLeft();				// no - turn left
-				makeFoursSteps();		// go to the next column
-				turnLeft();				// turn North to continue the cycle
+			if (leftIsClear()) {            // it was the last column (left is blocked)?
+				turnLeft();                // no - turn left
+				makeFoursSteps();        // go to the next column
+				turnLeft();                // turn North to continue the cycle
 			}
 		}
 
-    	say("Job is finished!");
-    }
+		say("Job is finished!");
+	}
 
 	/**
 	 * Initialize Karel.
